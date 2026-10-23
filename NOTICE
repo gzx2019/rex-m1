@@ -1,0 +1,11 @@
+Rex-M1-preview
+Copyright 2026 the Rex-M1-preview authors
+
+This product includes software from Xiaomi-Robotics-1
+(https://github.com/XiaomiRobotics/Xiaomi-Robotics-1), Copyright 2026 Xiaomi Corporation,
+licensed under the Apache License, Version 2.0. The files under mibot/, tools/, configs/ and
+setup.py derive from it and were modified by the Rex-M1-preview authors (history-frame input,
+training recipe, checkpoint loading, inference server).
+
+adapter/ is adapted from the Xiaomi_Robotics_1 policy adapter of RoboDojo XPolicyLab, licensed
+under the Apache License, Version 2.0.

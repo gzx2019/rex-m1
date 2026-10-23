@@ -1,0 +1,50 @@
+# @package _global_
+# Q2@60k: base model weights, RoboDojo v2 training data,
+# history stride 25, 60000 steps (4 nodes x 8 GPUs, batch 8 per GPU).
+defaults:
+  - data: q2
+  - model: posttrain
+  - trainer: deepspeed
+  - _self_
+# Q2@60k was trained on 4 nodes x 8 GPUs (global batch 256); override for other topologies.
+launch:
+  nodes: 4
+  gpus: 8
+  node_rank: 0
+  master_addr: localhost
+  master_port: 29500
+model:
+  params:
+    pretrained: ???   # base model model_states.pt (tools/weight_convert.py)
+    model:
+      backbone_path: Qwen/Qwen3-VL-4B-Instruct
+      dtype: bf16
+      num_steps: 5
+      ptp_length: 0
+      # Off so the LLM FFN and current-frame ViT are not recomputed on the backward pass.
+      ffn_gradient_checkpointing: false
+      # RTC action prefix. false trains every step with prefix_length 0 and skips
+      # the extra 5 no-grad DiT calls used to weight that prefix.
+      async_train: true
+trainer:
+  project: rex
+  exp_name: q2
+  default_root_dir: ./checkpoints/q2
+  max_steps: 60000
+  save_interval: 5000
+  num_nodes: ${launch.nodes}
+  devices: ${launch.gpus}
+  seed: 42
+  scheduler:
+    params:
+      num_training_steps: ${trainer.max_steps}
+      num_warmup_steps: 500
+      warmup_lr_start: 5.0e-07
+      max_lr: 1.0e-05
+      min_lr: 5.0e-07
+hydra:
+  run:
+    dir: .
+  output_subdir: null
+  job:
+    chdir: false

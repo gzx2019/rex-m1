@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+assets/config.py
+
+/*.egg-info/
+checkpoints/
+wandb/
+/build/

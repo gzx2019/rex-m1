@@ -1,0 +1,13 @@
+# @package _global_
+
+model:
+  type: "BaseRunner"
+  params:
+    pretrained: ???
+    model:
+      type: "xr1"
+      freq_coefficient: 1.0
+      freq_excluded_dims: [17, 18, 19]
+      ffn_gradient_checkpointing: true
+      # RTC action prefix. Set false to train with prefix_length 0 only.
+      async_train: true
