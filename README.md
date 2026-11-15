@@ -111,6 +111,17 @@ Zixuan Guo\*, Yiran Ling\*, Qing Lian†, Peng Yun, Yuda Xiong, Kent Yu, Lei Zha
 
 \* Equal contribution  † Project lead
 
+## Citation
+
+```bibtex
+@misc{rexm1,
+  title        = {Rex-M1: A Bimanual Manipulation Policy for RoboDojo},
+  author       = {Guo, Zixuan and Ling, Yiran and Lian, Qing and Yun, Peng and Xiong, Yuda and Yu, Kent and Zhang, Lei},
+  year         = {2026},
+  howpublished = {\url{https://github.com/gzx2019/rex-m1}}
+}
+```
+
 ## Acknowledgements
 
 Rex-M1-preview is post-trained from [Xiaomi-Robotics-1](https://github.com/XiaomiRobotics/Xiaomi-Robotics-1).
